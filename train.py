@@ -34,6 +34,7 @@ import jax
 from jax import random
 import jax.numpy as jnp
 import numpy as np
+import os 
 
 configs.define_common_flags()
 jax.config.parse_flags_with_absl()

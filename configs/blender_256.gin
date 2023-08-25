@@ -5,6 +5,7 @@ Config.far = 6
 Config.eval_render_interval = 5
 Config.data_loss_type = 'mse'
 Config.adam_eps = 1e-8
+Config.enable_robustnerf_loss = True
 
 Model.num_levels = 2
 Model.num_prop_samples = 128

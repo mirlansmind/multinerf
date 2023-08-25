@@ -1,0 +1,5 @@
+Config.robustnerf_inlier_quantile = 0.5
+Config.robustnerf_smoothed_filter_size = 3 
+Config.robustnerf_smoothed_inlier_quantile = 0.5 
+Config.robustnerf_inner_patch_size = 8
+Config.robustnerf_inner_patch_inlier_quantile = 0.4 

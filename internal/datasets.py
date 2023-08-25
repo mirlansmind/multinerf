@@ -163,7 +163,7 @@ def load_blender_posedata(data_dir, split=None):
       names.append(frame['file_path'].split('/')[-1])
       poses.append(np.array(frame['transform_matrix'], dtype=np.float32))
   poses = np.stack(poses, axis=0)
-
+  
   w = meta['w']
   h = meta['h']
   cx = meta['cx'] if 'cx' in meta else w / 2.
