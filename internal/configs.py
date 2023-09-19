@@ -48,7 +48,7 @@ class Config:
   """Configuration flags for everything."""
   dataset_loader: str = 'llff'  # The type of dataset loader to use.
   batching: str = 'all_images'  # Batch composition, [single_image, all_images].
-  batch_size: int = 65536  # The number of rays/pixels in each batch.
+  batch_size: int = 16384  # The number of rays/pixels in each batch.
   patch_size: int = 16  # Resolution of patches sampled for training batches.
   factor: int = 0  # The downsample factor of images, 0 for no downsampling.
   load_alphabetical: bool = True  # Load images in COLMAP vs alphabetical
@@ -170,6 +170,8 @@ class Config:
   robustnerf_inner_patch_size: int = 8
   robustnerf_inner_patch_inlier_quantile: float = 0.4
   enable_robustnerf_loss = True
+  enable_masked_nerf = True
+  
 
 
 

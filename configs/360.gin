@@ -1,7 +1,7 @@
 Config.dataset_loader = 'llff'
 Config.near = 0.2
 Config.far = 1e6
-Config.factor = 4
+Config.factor = 1
 
 Model.raydist_fn = @jnp.reciprocal
 Model.opaque_background = True

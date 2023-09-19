@@ -615,7 +615,8 @@ class LLFF(Dataset):
     else:
       # Load images.
       colmap_image_dir = os.path.join(self.data_dir, 'images')
-      image_dir = os.path.join(self.data_dir, 'images' + image_dir_suffix)
+      # image_dir = os.path.join(self.data_dir, 'images' + image_dir_suffix) 
+      image_dir = os.path.join(self.data_dir, 'images')
       for d in [image_dir, colmap_image_dir]:
         if not utils.file_exists(d):
           raise ValueError(f'Image folder {d} does not exist.')
@@ -685,8 +686,8 @@ class LLFF(Dataset):
       # For raw testscene, the first image sent to COLMAP has the same pose as
       # the ground truth test image. The remaining images form the training set.
       raw_testscene_poses = {
-          utils.DataSplit.TEST: poses[:1],
-          utils.DataSplit.TRAIN: poses[1:],
+          utils.DataSplit.TEST: poses[:6],
+          utils.DataSplit.TRAIN: poses[6:],
       }
       poses = raw_testscene_poses[self.split]
 
@@ -697,9 +698,9 @@ class LLFF(Dataset):
     if config.llff_use_all_images_for_training or raw_testscene:
       train_indices = all_indices
     else:
-      train_indices = all_indices % config.llffhold != 0
+      train_indices = all_indices >= 6
     split_indices = {
-        utils.DataSplit.TEST: all_indices[all_indices % config.llffhold == 0],
+        utils.DataSplit.TEST: all_indices[all_indices < 6],
         utils.DataSplit.TRAIN: train_indices,
     }
     indices = split_indices[self.split]
